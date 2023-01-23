@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Assets & Stuff</title>
+    <!-- css file for header-->
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/header.css')}}">
+    <!-- css file for rest of the page-->
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/assets.css')}}">
+    <!-- css file for event pop ups-->
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/lto_pop_up.css')}}">
+    <!-- css file for mvmt pop ups-->
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/event_pop_up.css')}}">
+  </head>
+  <div id="navbar">
+    <a href="/">Home</a>
+    <form id="login_form">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" placeholder="username">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="password">
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <div class="asset_container">
+    <div class="heading">
+      <h1>Asset Management</h1>
+    </div>
+    <div class="vic_container">
+      <div class="asset_title">
+        <h3>Assets</h3>
+      </div>
+      <form class="asset_submit_form" method="POST" enctype="multipart/form-data" action="/create_asset">
+        <div class="asset_heading">
+          <div class="asset_in">
+            <p>Serial Number</p>
+            <input type="text" name="sn" placeholder="Serial Number">
+          </div>
+          <div class="asset_in">
+            <p>Vehicle Make</p>
+            <div><input type="text" name="vmak" placeholder="Make"></div>
+          </div>
+          <div class="asset_in">
+            <p>Vehicle Model</p>
+            <div><input type="text" name="vmod" placeholder="Model"></div>
+          </div>
+        </div>
+        <div class="asset_sub_but">
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+      <div class="asset_titles">
+        <div class="titles">
+          <p>Serial Number</p>
+        </div>
+        <div class="titles">
+          <p>Current Mission</p>
+        </div>
+        <div class="titles">
+          <p>Make</p>
+        </div>
+        <div class="titles">
+          <p>Model</p>
+        </div>
+        <div class="titles">
+          <p>In Use</p>
+        </div>
+        <div class="titles">
+          <p>Start Date</p>
+        </div>
+        <div class="titles">
+          <p>End Date</p>
+        </div>
+        <div class="titles">
+          <p>Deadlined</p>
+        </div>
+      </div>
+      <div class="asset_scroll_holder">
+        {% for asset in data[3]%}
+        <div><p>{{asset[0]}}</p></div>
+        <div><p>{{asset[1]}}</p></div>
+        <div><p>{{asset[2]}}</p></div>
+        <div><p>{{asset[3]}}</p></div>
+        <div><p>{{asset[4]}}</p></div>
+        <div><p>{{asset[5]}}</p></div>
+        <div><p>{{asset[6]}}</p></div>
+        <div><p>{{asset[7]}}</p></div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="other_container">
+      <div class="driver_info">
+        <div class="driver_heading">
+          <h3>Drivers & VC</h3>
+        </div>
+        <form class="driver_form" method="POST" enctype="multipart/form-data" action="/driver">
+          <div>
+            <p>Enter Driver/VC Name below</p>
+          </div>
+          <div class="driver_inputs">
+            <input type="text" name="driver_name" placeholder="Name">
+            <input type="submit" value="Submit">
+          </div>
+        </form>
+        <div class="driver_div">
+          {% for driv in data[5]%}
+            <p>{{driv[1]}}</p>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="movement_info">
+        <div class="movement_heading">
+          <h3>Movement Types</h3>
+        </div>
+        <form class="movement_form" method="POST" enctype="multipart/form-data" action="/mvmt_type">
+          <div>
+            <p>Enter Type of Movement below</p>
+          </div>
+          <div class="mvmt_inputs">
+            <input type="text" name="mvmt_type" placeholder="Movement Type">
+            <input type="submit" value="Submit">
+          </div>
+        </form>
+        <div class="movement_div">
+          {% for mvmt in data[4]%}
+            <p>{{mvmt[1]}}</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="{{url_for('static', filename='/css/script.js')}}"></script>
+  <body>
+</html>

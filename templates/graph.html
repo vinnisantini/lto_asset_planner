@@ -1,0 +1,92 @@
+<! doctype html>
+  <html>
+    <head>
+      <title>Timeline View</title>
+      <!-- css file for header-->
+      <link rel="stylesheet" href="{{url_for('static', filename='/css/timeline.css')}}">
+      <!-- css file for rest of the page-->
+      <link rel="stylesheet" href="{{url_for('static', filename='/css/header.css')}}">
+      <!-- css file for event pop ups-->
+      <link rel="stylesheet" href="{{url_for('static', filename='/css/lto_pop_up.css')}}">
+      <!-- css file for mvmt pop ups-->
+      <link rel="stylesheet" href="{{url_for('static', filename='/css/event_pop_up.css')}}">
+    </head>
+    <body>
+      <div id="navbar">
+        <a href="/">Home</a>
+        <form id="login_form">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" placeholder="username">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" placeholder="password">
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+      <div id="action_bar">
+        <div class="dropdown">
+          <p class="dropbtn">{{data[2][1]}}</p>
+          <div class="dropdown-content"> {% for v in data[1] %} <form method="POST" enctype="multipart/form-data" action="/get_lto_timeline">
+              <input name="event" type="submit" value="{{v[1]}}">
+            </form> {% endfor %} </div>
+        </div>
+        <div id="action_buttons">
+          <button class="a_but" onclick="openForm()">Add LTO</button>
+          <button class="a_but" onclick="openEvForm()">Add Event</button>
+        </div>
+        <form id="action_buttons" method="POST" enctype="multipart/form-data" action="/timeline">
+          <button type="submit" class="a_but" name="btn sub" value="assets">View Assets</button>
+          <button type="submit" class="a_but" name="btn sub" value="event">Events Graph</button>
+          <button type="submit" class="a_but" name="btn sub" value="move">Movements Graph</button>
+        </form>
+      </div>
+    <!-- The LTO Creation form -->
+    <div class="form-popup" id="myForm">
+      <form method="POST" enctype="multipart/form-data" action="/create_event" class="form-container">
+        <div class="lto_form_heading">
+          <h1>Creating new L.T.O.</h1>
+        </div>
+        <div class="form_lto_name">
+          <p>Event Name</p>
+          <input type="text" placeholder="Enter LTO Name" name="event" required>
+        </div>
+        <div class="date_select">
+          <div class="sd_div">
+            <p>Start Date</p>
+            <input type="date" placeholder="Select Start Date" name="sd" required>
+          </div>
+          <div class="ed_dive">
+            <p>End Date</p>
+          <input type="date" placeholder="Select End Date" name="ed" required>
+          </div>
+        </div>
+        <div class="but_div">
+          <div class="buts"><button type="submit" class="btn sub">Submit</button></div>
+          <div class="buts"><button type="button" class="btn cancel" onclick="closeForm()">Cancel</button></div>
+        </div>
+      </form>
+    </div>
+    <!-- The Movement Creation form -->
+    <div class="form-popup_ev" id="myEvForm">
+      <form method="POST" enctype="multipart/form-data" action="/create_mvmt" class="form-container_ev">
+        <h1>Create new Movement</h1>
+        <div class="container">
+          <div class="wrap">
+            <p>Add Movements</p>
+            <a href="#" class="add">&plus;</a>
+          </div>
+          <div class="input_group"></div>
+        </div>
+        <button type="submit" class="btn sub">Submit</button>
+        <button type="button" class="btn cancel" onclick="closeEvForm()">Cancel</button>
+      </form>
+    </div>
+      <div id='chart' class='chart' ”></div>
+    </body>
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script type='text/javascript'>
+      let site_info = {{ data|tojson }}
+      var graphs = {{graphJSON | safe}};
+      Plotly.plot('chart', graphs, {});
+    </script>    
+    <script type="text/javascript" src="{{url_for('static', filename='/css/script.js')}}"></script>
+  </html>

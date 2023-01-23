@@ -1,0 +1,173 @@
+/* The popup form - hidden by default */
+.form-popup_ev {
+width: 90%;
+height: 500px;
+display: none;
+margin: 0 auto;
+position: fixed;
+top: 40%;
+left: 50%;
+transform: translate(-50%, -50%);
+border-radius: 16px;
+z-index: 1;
+}
+
+/* Add styles to the form container */
+.form-container_ev {
+padding: 10px;
+background-color: white;
+border-radius: 16px;
+}
+
+/* When the inputs get focus, do something */
+.form-container_ev input[type=text]:focus, .form-container_ev input[type=password]:focus {
+background-color: #ddd;
+outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container_ev .btn {
+background-color: #04AA6D;
+color: white;
+padding: 16px 20px;
+border: none;
+cursor: pointer;
+width: 30%;
+opacity: 0.8;
+align-self: center;
+}
+
+/* Add a red background color to the cancel button */
+.form-container_ev .cancel {
+background-color: red;
+}
+
+.form-container_ev .sub {
+margin-top: 16px;
+}
+
+/* Add some hover effects to buttons */
+.form-container_ev .btn:hover, .open-button:hover {
+opacity: 1;
+}
+
+.form-container_ev h1 {
+text-align: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    
+    .container {
+    background-color: #8a8a8a;
+    }
+    
+    .wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    }
+
+    .wrap p {
+        color: white;
+        margin-right: 3px;
+    }
+    
+    .add {
+    text-decoration: none;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color:#04AA6D;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    
+    .contain {
+        display: grid;
+        grid-template-columns: .97fr .03fr;
+        width: fit-content;
+        height: fit-content;
+        align-items: center;
+        margin: 5px;
+        border-radius: 8px;
+    }
+
+    .info_contain {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        border-color: #333;
+        height: fit-content;
+    }
+
+    .close_but_div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .delete {
+    text-decoration: none;
+    display: inline-block;
+    background-color: #f44336;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    }
+    
+    .input_group {
+    overflow-y: auto;
+    max-height: 500px;
+    }
+    
+    .contain input[type=text] {
+        padding: 14px 18px;
+        box-sizing: border-box;
+        border: 1px solid #2C74B3;
+        border-radius: 4px;
+        background: #f1f1f1;
+    }
+    
+    .contain input[type=date] {
+        padding: 12px 18px;
+        box-sizing: border-box;
+        border: 1px solid #2C74B3;
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+    
+    .contain input[type=time] {
+        padding: 12px 18px;
+        box-sizing: border-box;
+        border: 1px solid #2C74B3;
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+
+.inside_div {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.inside_div p {
+    color: white;
+    text-align: center;
+}

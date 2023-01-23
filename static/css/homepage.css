@@ -1,0 +1,40 @@
+body {
+  background-color: #205295;
+}
+
+.grid-tmr_item {
+  align-items: center;
+  width: 100%;
+  display: grid;
+  grid-template-columns: .25fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  background-color: #afcf9c;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  height: fit-content;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 0px;
+}
+
+.grid-child_tmr {
+  padding: 0px;
+  margin: 0px;
+}
+
+.grid-child_tmr p{
+  text-decoration: none;
+  text-align: center;
+}
+
+.week_div h3 {
+  color: white;
+}
+
+.grid-child_tmr button{
+  border: none;
+  background-color: #afcf9c;
+  cursor: pointer;
+  margin-left: 5px;
+}
